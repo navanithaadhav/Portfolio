@@ -8,6 +8,6 @@ export default defineConfig({
   optimizeDeps: {
     exclude: ['lucide-react'],
   },
-  base: process.env.VITE_BASE_PATH || '/', // Set base path for deployment
+  base: process.env.VITE_BASE_PATH || '/Portfolio', // Set base path for deployment
 
 });
