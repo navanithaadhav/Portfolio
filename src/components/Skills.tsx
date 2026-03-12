@@ -42,9 +42,9 @@ const Skills: React.FC = () => {
     <section
       id="skills"
       ref={ref}
-      className="py-20 relative"
+      className="py-24 lg:py-32 bg-[#020617] relative"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -52,17 +52,12 @@ const Skills: React.FC = () => {
         >
           <div className="text-center mb-16">
             <motion.div variants={itemVariants}>
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-                My Skills
+              <h2 className="text-3xl md:text-5xl font-bold text-center mb-16">
+                My{' '}
+                <span className="bg-gradient-to-r from-primary-400 to-accent-400 bg-clip-text text-transparent">
+                  Skills
+                </span>
               </h2>
-            </motion.div>
-            <motion.div variants={itemVariants}>
-              <div className="w-16 h-1 bg-purple-500 mx-auto mb-6"></div>
-            </motion.div>
-            <motion.div variants={itemVariants}>
-              <p className="text-gray-300 text-lg max-w-2xl mx-auto">
-                Specialized in MERN stack development with a strong foundation in modern web technologies.
-              </p>
             </motion.div>
           </div>
 
@@ -71,9 +66,9 @@ const Skills: React.FC = () => {
               <motion.div
                 key={index}
                 variants={itemVariants}
-                className="bg-gray-800/50 backdrop-blur-sm rounded-xl p-6 border border-gray-700/50 hover:border-purple-500/50 transition-all duration-300 hover:transform hover:scale-105"
+                className="bg-dark-100/40 border border-gray-800/60 backdrop-blur-md rounded-2xl p-8 hover:border-primary-500/30 transition-all duration-300 hover:transform hover:-translate-y-2 shadow-lg"
               >
-                <h3 className="text-xl font-semibold text-white mb-6 pb-2 border-b border-gray-700">
+                <h3 className="text-lg font-bold text-white mb-6 flex items-center gap-2 border-b border-gray-800/60 pb-4">
                   {category.name}
                 </h3>
                 
@@ -85,10 +80,10 @@ const Skills: React.FC = () => {
                       whileTap={{ scale: 0.95 }}
                       className="flex flex-col items-center text-center group"
                     >
-                      <div className="w-16 h-16 bg-gray-700/50 rounded-lg flex items-center justify-center mb-2 text-purple-400 group-hover:bg-gray-600/50 group-hover:text-purple-300 transition-all duration-200">
+                      <div className="w-14 h-14 bg-[#0a0f25] border border-gray-800/50 rounded-xl flex items-center justify-center mb-3 text-primary-400 group-hover:bg-primary-500/10 group-hover:border-primary-500/30 group-hover:text-primary-300 transition-all duration-300 shadow-[0_4px_20px_rgba(0,0,0,0.2)] group-hover:shadow-[0_0_15px_rgba(14,165,233,0.15)]">
                         {renderIcon(skill.icon)}
                       </div>
-                      <span className="text-gray-300 text-xs group-hover:text-white transition-colors duration-200">
+                      <span className="text-gray-400 text-xs font-medium group-hover:text-gray-200 transition-colors duration-200 leading-tight">
                         {skill.name}
                       </span>
                     </motion.div>

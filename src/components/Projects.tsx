@@ -2,6 +2,13 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { ExternalLink, Github, ChevronRight } from 'lucide-react';
+import * as LucideIcons from 'lucide-react';
+
+import Aiattendance from '../assets/images/Aiattendance.png';
+import Airesume from '../assets/images/Airesume.png';
+import Docuchat from '../assets/images/Docuchat.png';
+import educruts from '../assets/images/educruts.png';
+import herbalhot from '../assets/images/herbalhot.png';
 
 interface Project {
   id: number;
@@ -12,6 +19,7 @@ interface Project {
   technologies: string[];
   liveLink: string;
   repoLink: string;
+  icon: string;
 }
 
 const Projects: React.FC = () => {
@@ -23,146 +31,154 @@ const Projects: React.FC = () => {
   const projects: Project[] = [
     {
       id: 1,
-      title: "E-Commerce Platform",
-      description: "A full-stack e-commerce platform with product management, user authentication, and payment processing.",
-      image: "https://images.pexels.com/photos/5082579/pexels-photo-5082579.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-      category: ["Full Stack", "MERN"],
-      technologies: ["React", "Node.js", "Express", "MongoDB", "Redux", "Stripe API"],
-      liveLink: "#",
-      repoLink: "#",
+      title: "AI Attendance System",
+      description:
+        "An AI-powered attendance management system that uses real-time face recognition for seamless check-in and check-out. Features include user registration with face encoding, attendance tracking with detailed reports, and a dashboard with analytics — all powered by MediaPipe and OpenCV.",
+      image: Aiattendance,
+      category: ["AI", "Full Stack"],
+      technologies: ["React", "FastAPI", "MediaPipe", "OpenCV", "MongoDB", "Docker"],
+      liveLink: "https://ai-attendance-navan.vercel.app",
+      repoLink: "https://github.com/navanithaadhav/AI_Attendance_system",
+      icon: "ScanFace"
     },
     {
       id: 2,
-      title: "Task Management App",
-      description: "A collaborative task management application with real-time updates and team workspaces.",
-      image: "https://images.pexels.com/photos/3785927/pexels-photo-3785927.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-      category: ["Full Stack", "MERN"],
-      technologies: ["React", "Node.js", "Express", "MongoDB", "Socket.io"],
-      liveLink: "#",
-      repoLink: "#",
+      title: "DocuChat AI",
+      description: "An intelligent RAG-powered document interaction platform that enables users to upload multiple PDF files and have interactive conversations with their content. It uses advanced Retrieval-Augmented Generation to provide context-aware answers and deep insights using Google Gemini and LangChain.",
+      image: Docuchat,
+      category: ["AI", "Full Stack"],
+      technologies: ["React", "FastAPI", "LangChain", "Google Gemini API", "Pinecone", "MongoDB"],
+      liveLink: "https://docu-chat-ai-iota.vercel.app/",
+      repoLink: "https://github.com/navanithaadhav/DocuChatAI.git",
+      icon: "MessageSquare"
     },
     {
       id: 3,
-      title: "Finance Dashboard",
-      description: "An interactive dashboard for tracking personal finances with data visualization and budget planning.",
-      image: "https://images.pexels.com/photos/3943716/pexels-photo-3943716.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-      category: ["Frontend", "Data Visualization"],
-      technologies: ["React", "D3.js", "Material UI", "Firebase"],
-      liveLink: "#",
-      repoLink: "#",
+      title: "AI Resume Analyzer",
+      description:
+        "An AI-powered resume analysis tool that compares resumes with job descriptions and provides skill gap analysis, ATS optimization suggestions, and improvement recommendations using LangChain and OpenAI.",
+      image: Airesume,
+      category: ["AI", "Full Stack"],
+      technologies: ["React", "Node.js", "LangChain", "OpenAI API", "MongoDB"],
+      liveLink: "https://airesumetracker.vercel.app/",
+      repoLink: "https://github.com/navanithaadhav/AI_Resume_Tracker.git",
+      icon: "FileSearch"
     },
+
     {
       id: 4,
-      title: "Social Media Platform",
-      description: "A social networking platform with real-time chat, user profiles, and content sharing capabilities.",
-      image: "https://images.pexels.com/photos/267569/pexels-photo-267569.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      title: "Educrust LMS",
+      description:
+        "A full-featured Learning Management System with separate dashboards for students, teachers, and admins. Includes course management, authentication, and certificate generation.",
+      image: educruts,
       category: ["Full Stack", "MERN"],
-      technologies: ["React", "Node.js", "Express", "MongoDB", "Socket.io", "AWS S3"],
-      liveLink: "#",
-      repoLink: "#",
+      technologies: ["React", "TypeScript", "Node.js", "Express", "MongoDB", "JWT Auth", "AWS EC2"],
+      liveLink: "https://educrusts.online/",
+      repoLink: "https://github.com/navanithaadhav/Educrust-LMS.git",
+      icon: "GraduationCap"
     },
     {
       id: 5,
-      title: "Blog CMS",
-      description: "A content management system for blogs with rich text editing, user management, and analytics.",
-      image: "https://images.pexels.com/photos/1181467/pexels-photo-1181467.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-      category: ["Backend", "CMS"],
-      technologies: ["Node.js", "Express", "MongoDB", "JWT Authentication"],
-      liveLink: "#",
-      repoLink: "#",
+      title: "Herbal Hot E-Commerce",
+      description:
+        "A full-stack herbal product e-commerce platform with product listings, cart management, secure checkout, and admin product management.",
+      image: herbalhot,
+      category: ["Full Stack", "MERN"],
+      technologies: ["React", "TypeScript", "Node.js", "Express", "MongoDB", "Docker", "AWS EC2"],
+      liveLink: "https://herbalhot.shop/",
+      repoLink: "https://github.com/navanithaadhav/Herbal_Hot.git",
+      icon: "ShoppingBag"
     },
     {
       id: 6,
-      title: "Weather Dashboard",
-      description: "A weather forecasting application with location search, daily and hourly forecasts, and interactive maps.",
-      image: "https://images.pexels.com/photos/1118873/pexels-photo-1118873.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-      category: ["Frontend", "API Integration"],
-      technologies: ["React", "OpenWeather API", "Chart.js", "Tailwind CSS"],
-      liveLink: "#",
-      repoLink: "#",
+      title: "MERN Auth System",
+      description:
+        "A secure authentication system built using the MERN stack featuring JWT authentication, user registration, login, and protected routes.",
+      image: "https://images.pexels.com/photos/5380642/pexels-photo-5380642.jpeg",
+      category: ["Backend", "Authentication"],
+      technologies: ["Node.js", "Express", "MongoDB", "JWT", "React"],
+      liveLink: "https://mern-auth-gamma-weld.vercel.app/",
+      repoLink: "https://github.com/navanithaadhav/MERN-Auth.git",
+      icon: "Lock"
     },
   ];
 
   const [filter, setFilter] = useState<string>('All');
-  const categories = ['All', 'MERN', 'Frontend', 'Backend', 'Full Stack', 'API Integration', 'CMS', 'Data Visualization'];
+  const categories = ['All', 'AI', 'Full Stack', 'MERN', 'Backend'];
 
-  const filteredProjects = filter === 'All' 
-    ? projects 
+  const filteredProjects = filter === 'All'
+    ? projects
     : projects.filter(project => project.category.includes(filter));
+
+  const renderIcon = (iconName: string) => {
+    const Icon = (LucideIcons as any)[iconName];
+    return Icon ? <Icon size={20} className="text-primary-400" /> : null;
+  };
 
   const containerVariants = {
     hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
+    visible: { opacity: 1, transition: { staggerChildren: 0.1 } },
   };
 
   const itemVariants = {
     hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.5,
-      },
-    },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
   };
 
   return (
-    <section id="projects" className="py-20 bg-dark-300 relative">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-14">
-          <motion.h2
+    <section id="projects" className="py-24 bg-dark-300 relative overflow-hidden">
+      {/* Background decoration */}
+      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary-900/10 rounded-full blur-[120px] pointer-events-none -translate-y-1/2 translate-x-1/4" />
+
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="text-center mb-16">
+          <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}
-            className="text-3xl md:text-4xl font-bold mb-4"
           >
-            My <span className="text-primary-500">Projects</span>
+            <span className="text-primary-400 text-sm font-mono tracking-widest uppercase mb-3 block">
+              // my portfolio
+            </span>
+          </motion.div>
+          <motion.h2
+            initial={{ opacity: 0, y: -20 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="text-3xl md:text-5xl font-bold mb-4"
+          >
+            Featured <span className="bg-gradient-to-r from-primary-400 to-secondary-400 bg-clip-text text-transparent">Projects</span>
           </motion.h2>
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="w-20 h-1 bg-gradient-to-r from-primary-500 to-secondary-500 mx-auto mb-6"
-          ></motion.div>
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={inView ? { opacity: 1 } : {}}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-gray-300 max-w-2xl mx-auto"
-          >
-            Browse through my recent projects showcasing my skills and expertise in full-stack development.
-          </motion.p>
+            initial={{ scaleX: 0 }}
+            animate={inView ? { scaleX: 1 } : {}}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="w-24 h-1 bg-gradient-to-r from-primary-500 to-secondary-500 mx-auto mb-6 rounded-full"
+          />
         </div>
 
         {/* Filter Buttons */}
-        <div className="flex flex-wrap justify-center gap-3 mb-10">
-          {categories.map((category, index) => (
+        <div className="flex flex-wrap justify-center gap-3 mb-12">
+          {categories.map((category) => (
             <button
-              key={index}
+              key={category}
               onClick={() => setFilter(category)}
-              className={`px-4 py-2 rounded-full text-sm ${
-                filter === category
-                  ? 'bg-primary-500 text-white'
-                  : 'bg-dark-100 text-gray-300 hover:bg-dark-200'
-              } transition-colors duration-300`}
+              className={`px-6 py-2 rounded-xl text-sm font-medium transition-all duration-300 border ${filter === category
+                ? 'bg-primary-600 border-primary-500 text-white shadow-lg shadow-primary-600/20'
+                : 'bg-dark-100 border-gray-800 text-gray-400 hover:border-primary-500/30'
+                }`}
             >
               {category}
             </button>
           ))}
         </div>
 
-        {/* Projects Grid */}
         <motion.div
           ref={ref}
           variants={containerVariants}
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 xl:gap-10"
         >
           {filteredProjects.map((project) => (
             <motion.div
@@ -177,8 +193,7 @@ const Projects: React.FC = () => {
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-dark-200 to-transparent opacity-70"></div>
-                <div className="absolute bottom-4 left-4 right-4 flex justify-between items-center">
-                  <h3 className="text-white text-lg font-semibold">{project.title}</h3>
+                <div className="absolute bottom-4 left-4 right-4 flex justify-end items-center">
                   <div className="flex space-x-2">
                     <a
                       href={project.repoLink}
@@ -202,6 +217,10 @@ const Projects: React.FC = () => {
                 </div>
               </div>
               <div className="p-6">
+                <div className="flex items-center gap-2 mb-3">
+                  {renderIcon(project.icon)}
+                  <h3 className="text-white text-xl font-bold">{project.title}</h3>
+                </div>
                 <p className="text-gray-300 text-sm mb-4 line-clamp-3">{project.description}</p>
                 <div className="flex flex-wrap gap-2 mb-4">
                   {project.technologies.slice(0, 3).map((tech, index) => (

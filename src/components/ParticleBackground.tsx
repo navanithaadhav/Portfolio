@@ -1,12 +1,27 @@
-import React, { useCallback } from 'react';
-import Particles from 'react-particles';
-import type { Engine } from 'tsparticles-engine';
-import { loadSlim } from 'tsparticles-slim';
+import React, { useCallback, useEffect, useState } from "react";
+import Particles from "react-particles";
+import type { Engine } from "tsparticles-engine";
+import { loadSlim } from "tsparticles-slim";
 
 const ParticleBackground: React.FC = () => {
+  const [showParticles, setShowParticles] = useState(false);
+
+  // Delay loading the particles until after initial paint
+  useEffect(() => {
+    const timer = setTimeout(() => setShowParticles(true), 1500); // show after 1.5s
+    return () => clearTimeout(timer);
+  }, []);
+
   const particlesInit = useCallback(async (engine: Engine) => {
     await loadSlim(engine);
   }, []);
+
+  if (!showParticles) {
+    // Fallback before particles load
+    return (
+      <div className="absolute inset-0 -z-10 bg-gradient-to-r from-cyan-500 to-purple-600"></div>
+    );
+  }
 
   return (
     <Particles
@@ -14,9 +29,7 @@ const ParticleBackground: React.FC = () => {
       init={particlesInit}
       options={{
         background: {
-          color: {
-            value: "transparent",
-          },
+          color: { value: "transparent" },
         },
         fpsLimit: 60,
         particles: {
@@ -33,29 +46,18 @@ const ParticleBackground: React.FC = () => {
           move: {
             direction: "none",
             enable: true,
-            outModes: {
-              default: "bounce",
-            },
+            outModes: { default: "bounce" },
             random: true,
             speed: 0.5,
             straight: false,
           },
           number: {
-            density: {
-              enable: true,
-              area: 800,
-            },
-            value: 40,
+            density: { enable: true, area: 800 },
+            value: 25, // reduced from 40 -> lighter load
           },
-          opacity: {
-            value: 0.3,
-          },
-          shape: {
-            type: "circle",
-          },
-          size: {
-            value: { min: 1, max: 3 },
-          },
+          opacity: { value: 0.3 },
+          shape: { type: "circle" },
+          size: { value: { min: 1, max: 3 } },
         },
         detectRetina: true,
       }}
